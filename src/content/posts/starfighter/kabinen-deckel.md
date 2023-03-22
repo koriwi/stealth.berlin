@@ -1,6 +1,7 @@
 ---
 title: "Rumpfdeckel"
 pubDate: "Jul 08 2022"
+version: "CFK 160"
 gallery:
   - "/images/starfighter/1.jpeg"
   - "/images/starfighter/2.jpeg"

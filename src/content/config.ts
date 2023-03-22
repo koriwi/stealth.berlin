@@ -9,6 +9,10 @@ const posts = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
+    version: z
+      .string()
+      .refine((data) => data.replace(" ", "-"))
+      .default("unbekannt"),
     updatedDate: z
       .string()
       .optional()

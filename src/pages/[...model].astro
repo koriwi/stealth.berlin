@@ -1,0 +1,86 @@
+---
+import { getCollection } from "astro:content";
+import PostPreview from "../components/PostPreview.astro";
+import PostsByModel from "../components/PostsByModel.astro";
+import Default from "../layouts/Default.astro";
+import { cleanName } from "../lib";
+
+export async function getStaticPaths() {
+  const modelStrings = new Set(
+    (await getCollection("posts")).map((post) => post.slug.split("/")[0])
+  );
+  const models = await Promise.all(
+    [...modelStrings].map(async (id) => {
+      const versions = new Set(
+        (await getCollection("posts"))
+          .filter((post) => post.slug.startsWith(id + "/"))
+          .map((post) => post.data.version)
+      );
+      return {
+        id,
+        versions,
+      };
+    })
+  );
+  return models.map((model) => {
+    return ["", ...model.versions].map((version) => {
+      const versionSuffix = version ? `_${version}` : "";
+      return {
+        params: { model: `${model.id}${versionSuffix}` },
+        props: {
+          version,
+          model: {
+            ...model,
+            name: cleanName(model.id),
+          },
+        },
+      };
+    });
+  });
+}
+
+interface Props {
+  model: {
+    id: string;
+    name: string;
+    versions: Set<string>;
+  };
+  version?: string;
+}
+
+const { pathname } = Astro.url;
+const { model, version } = Astro.props;
+const isActive = `/${model.id}_${version}` === pathname;
+console.log("pathname", pathname);
+console.log("model", `/${model.id}_${version}`);
+const posts = (
+  await getCollection(
+    "posts",
+    (post) =>
+      (!version || post.data.version === version) &&
+      post.slug.startsWith(model.id + "/")
+  )
+).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// const versions = new Set(filteredPosts.map((post) => post.data.version));
+---
+
+<Default title={model.name}>
+  <h2>
+    {model.name} Historie und
+    <a class="text-center link" href={"/gallerie/" + model.id}>Gallerie</a>
+  </h2>
+  <div class="flex justify-center gap-2 mb-8">
+    Versionen:
+    {
+      [...model.versions].map((version) => (
+        <a class="link" href={`${model.id}_${version}`}>
+          {version}
+        </a>
+      ))
+    }
+  </div>
+  <div class="grid grid-cols-2 gap-4">
+    {posts.map((fp) => <PostPreview post={fp} />)}
+  </div>
+</Default>
