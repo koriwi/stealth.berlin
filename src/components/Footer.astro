@@ -2,12 +2,25 @@
 const today = new Date();
 ---
 
-<footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+<footer class="mt-12 flex flex-col items-center">
+  <div class="mb-2 flex gap-4">
+    Forum:
+    <a
+      class="underline underline-offset-8"
+      href="https://www.rc-network.de/threads/starfighter-in-sicht-carbon.11883880/"
+      target="_blank">SF104</a
+    >
+    <a
+      class="underline underline-offset-8"
+      href="https://www.rc-network.de/threads/f19aurora-in-full-cfk-163gr-schiebefest.757231/"
+      target="_blank">F19 Aurora</a
+    >
+  </div>
+  <div
+    class="h-[1px] bg-gradient-to-r from-transparent via-neonOrange to-transparent w-full"
+  >
+  </div>
+  <div class="px-12 py-4 font-futurism">
+    {today.getFullYear()} Heiko Gosewisch
+  </div>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>

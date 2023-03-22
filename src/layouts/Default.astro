@@ -1,0 +1,83 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en" class="h-full text-white text-2xl overflow-y-auto">
+  <head>
+    <BaseHead title={title ?? SITE_TITLE} />
+  </head>
+
+  <body
+    class="flex flex-col w-full items-center h-full bg-gradient-to-r from-transparent/90 to-transparent/90 via-transparent/50 overflow-y-auto"
+  >
+    <Header />
+    <main
+      class="pt-8 mb-auto max-w-3xl flex flex-col justify-center bg-gradient-to-b from-neutral-100/10 px-8 text-shadow shadow-black"
+    >
+      <slot />
+    </main>
+    <Footer />
+    <style is:global>
+      .text-shadow {
+        text-shadow: 0 0 3px var(--tw-shadow-color);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 0 5px var(--tw-shadow-color);
+      }
+      @font-face {
+        font-family: "futurism";
+        src: url("/Futurism.otf") format("opentype");
+        font-weight: 100 900;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Jura";
+        src: url("/jura.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: normal;
+      }
+      html {
+        background-color: rgb(32, 32, 32);
+        background-image: linear-gradient(
+            45deg,
+            black 25%,
+            transparent 25%,
+            transparent 75%,
+            black 75%,
+            black
+          ),
+          linear-gradient(
+            45deg,
+            black 25%,
+            transparent 25%,
+            transparent 75%,
+            black 75%,
+            black
+          ),
+          linear-gradient(to bottom, rgb(8, 8, 8), rgb(32, 32, 32));
+        background-size: 20px 20px, 20px 20px, 20px 10px;
+        background-position: 0px 0px, 10px 10px, 0px 0px;
+        @apply font-jura;
+      }
+      h1 {
+        @apply font-jura text-center text-2xl mb-12;
+      }
+      h2 {
+        @apply font-jura text-center text-xl mb-8;
+      }
+      h3 {
+        @apply font-jura text-lg mb-4;
+      }
+    </style>
+  </body>
+</html>

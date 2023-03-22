@@ -1,24 +1,27 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<"a">;
 
 const { href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+const firstPartOfPath = href?.toString().split("/")[1];
+const firstPartOfCurrentPath = pathname.split("/")[1];
+const isActive =
+  href === pathname ||
+  (firstPartOfPath && firstPartOfCurrentPath.includes(firstPartOfPath));
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+<a
+  href={href}
+  class:list={[
+    "duration-300 border-b-[1px] border-[#FF5F1F]",
+    isActive
+      ? "mx-4 text-white text-shadow shadow-neonGreen border-neonGreen font-extrabold"
+      : "px-4 text-white/75 ",
+  ]}
+  {...props}
+>
+  <slot />
 </a>
-<style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
-</style>

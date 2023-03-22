@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import PostsByCategory from "../components/PostsByCategory.astro";
+import Default from "../layouts/Default.astro";
+
+export async function getStaticPaths() {
+  const categories = new Set(
+    (await getCollection("posts")).map((post) => post.slug.split("/")[0])
+  );
+  console.log(categories);
+  return [...categories].map((category) => {
+    return {
+      params: { category },
+      props: {},
+    };
+  });
+}
+
+const { category } = Astro.params;
+---
+
+<Default title={category?.toUpperCase()}>
+  {category && <PostsByCategory category={category} />}
+</Default>

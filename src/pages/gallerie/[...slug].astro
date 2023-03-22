@@ -1,0 +1,43 @@
+---
+import Gallery from "../../components/Gallery.astro";
+import Default from "../../layouts/Default.astro";
+
+export async function getStaticPaths() {
+  const { readdirSync } = await import("fs");
+  const imageDirs = readdirSync("./public/images");
+
+  return [...imageDirs].map((imagePath) => {
+    const images = readdirSync("./public/images/" + imagePath).map(
+      (image) => `/images/${imagePath}/${image}`
+    );
+    return {
+      params: { slug: imagePath },
+      props: { images },
+    };
+  });
+}
+interface Props {
+  images: string[];
+}
+const { slug } = Astro.params;
+const { images } = Astro.props;
+---
+
+<Default title={slug! + " Gallerie"} description={`${images.length} Bilder`}>
+  <h2>
+    <span class="uppercase">{slug}</span> Gallerie
+  </h2>
+
+  <Gallery images={images} />
+  <div class="grid grid-cols-2 content-center gap-2">
+    {
+      images.map((image) => {
+        return (
+          <label for={image} class="h-full w-full cursor-pointer">
+            <img class="h-full w-full object-cover rounded-sm" src={image} />
+          </label>
+        );
+      })
+    }
+  </div>
+</Default>

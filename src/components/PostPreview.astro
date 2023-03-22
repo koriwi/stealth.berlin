@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+const { post } = Astro.props;
+---
+
+<a class="rounded-sm overflow-hidden" href={"/" + post.slug}>
+  <div class="max-w-lg rounded-sm cursor-pointer flex justify-between flex-col">
+    <img src={post.data.gallery[0]} class="h-48 object-cover" />
+    <div class="p-4 bg-gradient-to-b from-gray-100/10">
+      <h3 class="text-ellipsis overflow-hidden whitespace-nowrap">
+        {post.data.title}
+      </h3>
+      <FormattedDate date={post.data.pubDate} />
+    </div>
+  </div>
+</a>

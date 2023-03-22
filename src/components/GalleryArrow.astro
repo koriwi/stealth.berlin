@@ -1,0 +1,14 @@
+---
+interface Props {
+  classes?: string;
+}
+const { classes } = Astro.props;
+---
+
+<div
+  class={"duration-200 transition-all absolute px-8 flex h-full w-auto justify-center group-hover:opacity-100 opacity-0 bg-black/40 text-white/70 cursor-pointer select-none items-center text-3xl" +
+    " " +
+    classes ?? ""}
+>
+  <slot />
+</div>

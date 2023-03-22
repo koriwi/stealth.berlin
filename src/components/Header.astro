@@ -1,25 +1,47 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import { getCollection } from "astro:content";
+import { readdirSync } from "fs";
+import { SITE_TITLE } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+import TranslateModel from "./TranslateModel.astro";
+const categories = new Set(
+  (await getCollection("posts"))
+    .map((post) => post.slug.split("/")[0])
+    .sort((a, b) => {
+      // sort alphabetically but put entries beginning with _ at the end
+      if (b.startsWith("_")) {
+        return -1;
+      }
+      if (a.startsWith("_")) {
+        return 1;
+      }
+      return a.localeCompare(b);
+    })
+);
 ---
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+<header
+  class="w-full flex flex-col items-center [text-shadow:0px_0px_5px_#fffa] bg-gradient-to-b to-transparent from-neutral-700/30"
+>
+  <a href="/"
+    ><h2 class="p-12 font-futurism text-5xl">
+      {SITE_TITLE}
+    </h2></a
+  >
+  <div class="w-full flex items-end">
+    <div class="h-[1px] bg-gradient-to-r from-white/10 to-neonOrange flex-grow">
+    </div>
+    <nav class="font-futurism flex justify-center">
+      <HeaderLink href="/">Home</HeaderLink>
+      {
+        [...categories].map((model, index) => (
+          <HeaderLink href={`/${model}`}>
+            <TranslateModel text={model} />
+          </HeaderLink>
+        ))
+      }
+    </nav>
+    <div class="h-[1px] bg-gradient-to-l from-white/10 to-neonOrange flex-grow">
+    </div>
+  </div>
 </header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
-</style>
