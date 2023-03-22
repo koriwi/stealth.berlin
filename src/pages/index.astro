@@ -3,14 +3,18 @@ import { getCollection } from "astro:content";
 import BlogPost from "../components/BlogPost.astro";
 import Hr from "../components/Hr.astro";
 import Default from "../layouts/Default.astro";
+import { cleanName } from "../lib";
 const posts = await getCollection("posts");
-const newestPost = posts[0];
-const { Content } = await newestPost.render();
+const newestPost = posts.at(-1);
 ---
 
 <!DOCTYPE html>
 <Default title="Faszination EDF">
-  <h1 class="text-3xl mb-8 text-center">Aktuell</h1>
-  <Hr />
-  <BlogPost post={newestPost} />
+  {
+    newestPost && (
+      <h1 class="text-center mb-0">Aktuell</h1>
+      <Hr />
+      <BlogPost post={newestPost} />
+    )
+  }
 </Default>

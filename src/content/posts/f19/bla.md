@@ -1,6 +1,7 @@
 ---
 title: "Rumpfdeckel"
-pubDate: "Jul 08 2022"
+pubDate: "1995-07-14"
+version: GFK
 gallery:
   - "/images/starfighter/1.jpeg"
   - "/images/starfighter/2.jpeg"

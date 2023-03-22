@@ -1,6 +1,6 @@
 ---
 title: "Dritter Post. Testen und so."
-pubDate: "Jul 10 2022"
+pubDate: "2022-12-09"
 version: "CFK 235"
 gallery:
   - "/images/starfighter/3.jpeg"

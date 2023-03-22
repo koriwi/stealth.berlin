@@ -1,6 +1,7 @@
 ---
 title: "Rumpfdeckel"
-pubDate: "Jul 08 2022"
+pubDate: "2022-05-20"
+version: CFK
 gallery:
   - "/images/starfighter/1.jpeg"
   - "/images/starfighter/2.jpeg"

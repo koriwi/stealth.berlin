@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Gallery from "../components/Gallery.astro";
 import Default from "../layouts/Default.astro";
+import { cleanName } from "../lib";
 import FormattedDate from "./FormattedDate.astro";
 
 interface Props {
@@ -14,10 +15,14 @@ if (!post) {
 const { Content } = await post.render();
 ---
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
   <div class="flex justify-between">
+    <div>
+      {cleanName(post.slug.split("/")[0])}:{" "}
+      {post.data.version}
+    </div>
     <h3>{post?.data.title}</h3>
-    <FormattedDate date={post?.data.pubDate} />
+    <span><FormattedDate date={post?.data.pubDate} /></span>
   </div>
   <div class="grid grid-cols-2 gap-2 rounded-md">
     {

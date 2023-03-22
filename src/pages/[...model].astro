@@ -4,39 +4,53 @@ import PostPreview from "../components/PostPreview.astro";
 import PostsByModel from "../components/PostsByModel.astro";
 import Default from "../layouts/Default.astro";
 import { cleanName } from "../lib";
-
+interface Model {
+  id: string;
+  name: string;
+  versions: Set<string>;
+}
 export async function getStaticPaths() {
-  const modelStrings = new Set(
-    (await getCollection("posts")).map((post) => post.slug.split("/")[0])
-  );
-  const models = await Promise.all(
-    [...modelStrings].map(async (id) => {
-      const versions = new Set(
-        (await getCollection("posts"))
-          .filter((post) => post.slug.startsWith(id + "/"))
-          .map((post) => post.data.version)
-      );
-      return {
-        id,
-        versions,
+  const posts = await getCollection("posts");
+
+  const models: Record<string, Model> = {};
+  for (const post of posts) {
+    const [model] = post.slug.split("/");
+
+    if (!models[model]) {
+      models[model] = {
+        id: model,
+        name: cleanName(model),
+        versions: new Set(""),
       };
-    })
-  );
-  return models.map((model) => {
-    return ["", ...model.versions].map((version) => {
-      const versionSuffix = version ? `_${version}` : "";
-      return {
-        params: { model: `${model.id}${versionSuffix}` },
-        props: {
-          version,
-          model: {
-            ...model,
-            name: cleanName(model.id),
-          },
+    }
+
+    if (post.data.version) {
+      models[model].versions.add(post.data.version);
+    }
+  }
+  const paths = [];
+  for (const [id, model] of Object.entries(models)) {
+    for (const version of model.versions) {
+      paths.push({
+        params: {
+          model: `${id}_${version}`,
         },
-      };
+        props: {
+          model,
+          version,
+        },
+      });
+    }
+    paths.push({
+      params: {
+        model: id,
+      },
+      props: {
+        model,
+      },
     });
-  });
+  }
+  return paths;
 }
 
 interface Props {
@@ -48,11 +62,8 @@ interface Props {
   version?: string;
 }
 
-const { pathname } = Astro.url;
 const { model, version } = Astro.props;
-const isActive = `/${model.id}_${version}` === pathname;
-console.log("pathname", pathname);
-console.log("model", `/${model.id}_${version}`);
+
 const posts = (
   await getCollection(
     "posts",
@@ -61,8 +72,6 @@ const posts = (
       post.slug.startsWith(model.id + "/")
   )
 ).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
-// const versions = new Set(filteredPosts.map((post) => post.data.version));
 ---
 
 <Default title={model.name}>
@@ -72,10 +81,25 @@ const posts = (
   </h2>
   <div class="flex justify-center gap-2 mb-8">
     Versionen:
+    <a
+      class={`link ${
+        !version ? "text-shadow shadow-neonGreen decoration-neonGreen" : ""
+      }`}
+      href={model.id}
+    >
+      {"Alle"}
+    </a>
     {
-      [...model.versions].map((version) => (
-        <a class="link" href={`${model.id}_${version}`}>
-          {version}
+      [...model.versions].map((modelVersion) => (
+        <a
+          class={`link ${
+            modelVersion === version
+              ? "text-shadow shadow-neonGreen decoration-neonGreen"
+              : ""
+          }`}
+          href={`${model.id}_${modelVersion}`}
+        >
+          {modelVersion || "Alle"}
         </a>
       ))
     }

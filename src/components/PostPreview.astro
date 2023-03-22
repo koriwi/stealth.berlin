@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { cleanName } from "../lib";
 import FormattedDate from "./FormattedDate.astro";
 interface Props {
   post: CollectionEntry<"posts">;
@@ -14,7 +15,10 @@ const { post } = Astro.props;
       <h3 class="text-ellipsis overflow-hidden whitespace-nowrap">
         {post.data.title}
       </h3>
-      <FormattedDate date={post.data.pubDate} />
+      <div class="flex justify-between">
+        <FormattedDate date={post.data.pubDate} />
+        {cleanName(post.slug.split("/")[0])}: {post.data.version}
+      </div>
     </div>
   </div>
 </a>

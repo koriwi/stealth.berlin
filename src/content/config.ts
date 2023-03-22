@@ -8,11 +8,11 @@ const posts = defineCollection({
     pubDate: z
       .string()
       .or(z.date())
-      .transform((val) => new Date(val)),
+      .transform((val) => new Date(val.toString())),
     version: z
       .string()
       .refine((data) => data.replace(" ", "-"))
-      .default("unbekannt"),
+      .default("Unbekannt"),
     updatedDate: z
       .string()
       .optional()
