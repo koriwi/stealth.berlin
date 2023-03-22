@@ -11,14 +11,17 @@ export async function getStaticPaths() {
   return [...categories].map((category) => {
     return {
       params: { category },
-      props: {},
+      props: { name: category },
     };
   });
 }
+interface Props {
+  name: string;
+}
 
-const { category } = Astro.params;
+const { name } = Astro.props;
 ---
 
-<Default title={category?.toUpperCase()}>
-  {category && <PostsByCategory category={category} />}
+<Default title={name.toUpperCase()}>
+  <PostsByCategory category={name} />
 </Default>
