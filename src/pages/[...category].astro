@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import PostsByCategory from "../components/PostsByCategory.astro";
 import Default from "../layouts/Default.astro";
+import { cleanName } from "../lib";
 
 export async function getStaticPaths() {
   const categories = new Set(
@@ -11,17 +12,18 @@ export async function getStaticPaths() {
   return [...categories].map((category) => {
     return {
       params: { category },
-      props: { name: category },
+      props: { name: cleanName(category), id: category },
     };
   });
 }
 interface Props {
   name: string;
+  id: string;
 }
 
-const { name } = Astro.props;
+const { name, id } = Astro.props;
 ---
 
-<Default title={name.toUpperCase()}>
-  <PostsByCategory category={name} />
+<Default title={name}>
+  <PostsByCategory id={id} name={name} />
 </Default>

@@ -1,7 +1,7 @@
 ---
 import Gallery from "../components/Gallery.astro";
-import TranslateModel from "../components/TranslateModel.astro";
 import Default from "../layouts/Default.astro";
+import { cleanName } from "../lib";
 
 export async function getStaticPaths() {
   const { readdirSync } = await import("fs");
@@ -13,20 +13,21 @@ export async function getStaticPaths() {
     );
     return {
       params: { gallery: `gallerie/${imagePath}` },
-      props: { images, name: imagePath },
+      props: { images, name: cleanName(imagePath), id: imagePath },
     };
   });
 }
 interface Props {
   images: string[];
   name: string;
+  id: string;
 }
 const { images, name } = Astro.props;
 ---
 
 <Default title={name + " Gallerie"} description={`${images.length} Bilder`}>
   <h2>
-    <TranslateModel text={name} /> Gallerie
+    {name} Gallerie
   </h2>
 
   <Gallery images={images} />

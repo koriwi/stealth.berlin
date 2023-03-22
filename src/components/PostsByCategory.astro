@@ -1,22 +1,20 @@
 ---
 import { getCollection } from "astro:content";
 import PostPreview from "../components/PostPreview.astro";
-import TranslateModel from "./TranslateModel.astro";
 interface Props {
-  category: string;
+  id: string;
+  name: string;
 }
-const { category } = Astro.props;
+const { id, name } = Astro.props;
 const posts = await getCollection("posts");
 const filteredPosts = posts
-  .filter((post) => post.slug.startsWith(category + "/"))
+  .filter((post) => post.slug.startsWith(id + "/"))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <h2>
-  <TranslateModel text={category} /> Historie und
-  <a class="text-center underline mb-6" href={"/gallerie/" + category}
-    >Gallerie</a
-  >
+  {name} Historie und
+  <a class="text-center underline mb-6" href={"/gallerie/" + id}>Gallerie</a>
 </h2>
 <div class="grid grid-cols-2 gap-4">
   {filteredPosts.map((fp) => <PostPreview post={fp} />)}
