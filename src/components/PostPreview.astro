@@ -13,7 +13,7 @@ const { post } = Astro.props;
   <div class="max-w-lg rounded-sm cursor-pointer flex justify-between flex-col">
     <Picture
       className="w-full"
-      sizes={{ sm: 600, md: 550, lg: 720 }}
+      sizes={{ sm: 640, md: 768 }}
       src={post.data.gallery[0]}
     />
 
@@ -26,7 +26,7 @@ const { post } = Astro.props;
               <Picture
                 className="w-full"
                 src={picture}
-                sizes={{ sm: 100, md: 120, lg: 240 }}
+                sizes={{ sm: 146, md: 185 }}
               />
             ))
         }

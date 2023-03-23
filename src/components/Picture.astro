@@ -6,8 +6,8 @@ import { twSizes } from "../lib";
 interface Props {
   sizes: {
     sm: number;
-    md: number;
-    lg: number;
+    md?: number;
+    lg?: number;
   };
   fit?: CropFit;
   src: string;
@@ -21,10 +21,15 @@ const {
   className = "",
   alt = "Picture",
 } = Astro.props;
+const widths = [sizes.sm, sizes.md, sizes.lg].filter((x) => x) as number[];
+for (let i = 0; i < 3 - widths.length; i++) {
+  const fallback = widths[3 - widths.length - 1]!;
+  widths.push(fallback);
+}
 ---
 
 <Picture
-  widths={[sizes.sm, sizes.md, sizes.lg]}
+  widths={widths}
   alt={alt}
   formats={["jpeg", "avif", "webp"]}
   quality={85}
