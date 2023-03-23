@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { cleanName } from "../lib";
+import { cleanName, twSizes } from "../lib";
 import FormattedDate from "./FormattedDate.astro";
+import Picture from "./Picture.astro";
 interface Props {
   post: CollectionEntry<"posts">;
 }
@@ -10,14 +11,42 @@ const { post } = Astro.props;
 
 <a class="rounded-sm overflow-hidden" href={"/" + post.slug}>
   <div class="max-w-lg rounded-sm cursor-pointer flex justify-between flex-col">
-    <img src={post.data.gallery[0]} class="h-48 object-cover" />
-    <div class="p-4 bg-gradient-to-b from-gray-100/10">
-      <h3 class="text-ellipsis overflow-hidden whitespace-nowrap">
-        {post.data.title}
-      </h3>
-      <div class="flex justify-between">
-        <FormattedDate date={post.data.pubDate} />
-        {cleanName(post.slug.split("/")[0])}: {post.data.version}
+    <Picture
+      className="w-full"
+      sizes={{ sm: 600, md: 550, lg: 720 }}
+      src={post.data.gallery[0]}
+    />
+
+    <div class="bg-gradient-to-b from-neutral-100/20 to-neutral-100/10 pt-1">
+      <div class="grid grid-cols-4 gap-1 px-1">
+        {
+          post.data.gallery
+            .slice(1, 4)
+            .map((picture) => (
+              <Picture
+                className="w-full"
+                src={picture}
+                sizes={{ sm: 100, md: 120, lg: 240 }}
+              />
+            ))
+        }
+        {
+          post.data.gallery.length - 4 > 0 && (
+            <div class="flex justify-center items-center text-center leading-tight gap-2 bg-neutral-600/50">
+              +{post.data.gallery.length - 4}
+              <span class="hidden md:block"> Bilder</span>
+            </div>
+          )
+        }
+      </div>
+      <div class="p-4">
+        <h3 class="text-ellipsis overflow-hidden whitespace-nowrap">
+          {post.data.title}
+        </h3>
+        <div class="flex flex-col-reverse lg:flex-row justify-between">
+          <FormattedDate date={post.data.pubDate} />
+          {cleanName(post.slug.split("/")[0])}: {post.data.version}
+        </div>
       </div>
     </div>
   </div>

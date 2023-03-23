@@ -21,7 +21,11 @@ const { images } = Astro.props;
             <GalleryArrow classes="left-0">{"<"}</GalleryArrow>
           </label>
 
-          <img src={image} class="transition-all object-contain" />
+          <img
+            loading="lazy"
+            src={image}
+            class="transition-all object-contain"
+          />
           <label class="cursor-pointer" for={images[index + 1]}>
             <GalleryArrow classes="right-0">{">"}</GalleryArrow>
           </label>

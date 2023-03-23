@@ -1,0 +1,36 @@
+---
+import { Picture } from "@astrojs/image/components";
+import type { CropFit } from "@astrojs/image/dist/loaders";
+import { twSizes } from "../lib";
+
+interface Props {
+  sizes: {
+    sm: number;
+    md: number;
+    lg: number;
+  };
+  fit?: CropFit;
+  src: string;
+  className?: string;
+  alt?: string;
+}
+const {
+  sizes,
+  src,
+  fit = "cover",
+  className = "",
+  alt = "Picture",
+} = Astro.props;
+---
+
+<Picture
+  widths={[sizes.sm, sizes.md, sizes.lg]}
+  alt="Post picture"
+  formats={["jpeg"]}
+  fit={fit}
+  loading="lazy"
+  sizes={twSizes(sizes)}
+  aspectRatio={16 / 9}
+  src={src}
+  class={className}
+/>

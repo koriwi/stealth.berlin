@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import PostPreview from "../components/PostPreview.astro";
-import PostsByModel from "../components/PostsByModel.astro";
 import Default from "../layouts/Default.astro";
 import { cleanName } from "../lib";
 interface Model {
@@ -79,7 +78,9 @@ const posts = (
     {model.name} Historie und
     <a class="text-center link" href={"/gallerie/" + model.id}>Gallerie</a>
   </h2>
-  <div class="flex justify-center gap-2 mb-8">
+  <div
+    class="flex flex-col lg:flex-row items-center justify-center lg:gap-2 mb-8 p-2 bg-neutral-100/10 rounded-sm"
+  >
     Versionen:
     <a
       class={`link ${
@@ -104,7 +105,7 @@ const posts = (
       ))
     }
   </div>
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
     {posts.map((fp) => <PostPreview post={fp} />)}
   </div>
 </Default>

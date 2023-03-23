@@ -3,7 +3,7 @@
   <head>
     <!-- Global Metadata --><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Astro v2.1.3">
+<meta name="generator" content="Astro v2.1.5">
 
 <!-- Canonical URL -->
 <link rel="canonical" href="https://stealth.berlin/f19_CFK/">
@@ -14,38 +14,56 @@
 <!-- Primary Meta Tags -->
 <title>F19</title>
 <meta name="title" content="F19">
-  <link rel="stylesheet" href="/_astro/_...gallery_.4d3b4c1b.css" /></head>
+  <link rel="stylesheet" href="/_astro/_...gallery_.9b0a1301.css" /></head>
 
   <body class="flex flex-col w-full items-center h-full bg-gradient-to-r from-transparent/90 to-transparent/90 via-transparent/50 overflow-y-auto">
     <header class="w-full flex flex-col items-center [text-shadow:0px_0px_5px_#fffa] bg-gradient-to-b to-transparent from-neutral-700/30">
-  <a href="/"><h2 class="p-12 font-futurism text-5xl">
+  <a href="/">
+    <h1 class="p-4 mt-4 md:mt-0 md:p-12 font-futurism text-3xl md:text-5xl">
       Faszination EDF
-    </h2></a>
+    </h1>
+  </a>
   <div class="w-full flex items-end">
     <div class="h-[1px] bg-gradient-to-r from-white/10 to-neonOrange flex-grow">
     </div>
-    <nav class="font-futurism flex justify-center">
-      <a href="/" class="duration-300 border-b-[1px] border-[#FF5F1F] px-4 text-white/75">
+    <label for="menu">
+      <nav class="font-futurism flex flex-col md:flex-row gap-3 justify-center px-3">
+        <input type="checkbox" class="hidden peer" id="menu">
+        <a href="/" class="px-2 text-center hidden peer-checked:block md:block duration-300 border-b-[1px] text-white/75 border-[#FF5F1F]">
   Home
 </a>
-      <a href="/f19" class="duration-300 border-b-[1px] border-[#FF5F1F] mx-4 text-white text-shadow shadow-neonGreen border-neonGreen font-extrabold">
+<div class="px-2 text-center peer-checked:hidden duration-300 border-b-[1px] hidden">
+  Home
+</div>
+        <a href="/f19" class="px-2 text-center hidden peer-checked:block md:block duration-300 border-b-[1px] text-white text-shadow shadow-neonGreen border-neonGreen font-extrabold">
   F19
-</a><a href="/starfighter" class="duration-300 border-b-[1px] border-[#FF5F1F] px-4 text-white/75">
+</a>
+<div class="px-2 text-center peer-checked:hidden duration-300 border-b-[1px] md:hidden text-white text-shadow shadow-neonGreen border-neonGreen font-extrabold">
+  F19
+</div><a href="/starfighter" class="px-2 text-center hidden peer-checked:block md:block duration-300 border-b-[1px] text-white/75 border-[#FF5F1F]">
   Starfighter
 </a>
-      <a href="/forum" class="duration-300 border-b-[1px] border-[#FF5F1F] px-4 text-white/75">
+<div class="px-2 text-center peer-checked:hidden duration-300 border-b-[1px] hidden">
+  Starfighter
+</div>
+        <a href="/forum" class="px-2 text-center hidden peer-checked:block md:block duration-300 border-b-[1px] text-white/75 border-[#FF5F1F]">
   Forum
 </a>
-    </nav>
+<div class="px-2 text-center peer-checked:hidden duration-300 border-b-[1px] hidden">
+  Forum
+</div>
+      </nav>
+    </label>
     <div class="h-[1px] bg-gradient-to-l from-white/10 to-neonOrange flex-grow">
     </div>
   </div>
 </header>
-    <main class="pt-8 mb-auto max-w-3xl flex flex-col justify-center bg-gradient-to-b from-neutral-100/10 px-8 text-shadow shadow-black">
-      <h2>
+    <main class="bg-neutral-100/10 lg:px-8 text-shadow shadow-black w-full flex flex-col items-center">
+      <div class="pt-8 mb-auto max-w-3xl flex flex-col justify-center px-2">
+        <h2>
     F19 Historie und
     <a class="text-center link" href="/gallerie/f19">Gallerie</a>
-  </h2><div class="flex justify-center gap-2 mb-8">
+  </h2><div class="flex flex-col lg:flex-row items-center justify-center lg:gap-2 mb-8 p-2 bg-neutral-100/10 rounded-sm">
     Versionen:
     <a class="link " href="f19">
       Alle
@@ -55,30 +73,52 @@
         </a><a class="link text-shadow shadow-neonGreen decoration-neonGreen" href="f19_CFK">
           CFK
         </a>
-  </div><div class="grid grid-cols-2 gap-4">
+  </div><div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
     <a class="rounded-sm overflow-hidden" href="/f19/kabinen-deckel">
   <div class="max-w-lg rounded-sm cursor-pointer flex justify-between flex-col">
-    <img src="/images/starfighter/1.jpeg" class="h-48 object-cover">
-    <div class="p-4 bg-gradient-to-b from-gray-100/10">
-      <h3 class="text-ellipsis overflow-hidden whitespace-nowrap">
-        Rumpfdeckel
-      </h3>
-      <div class="flex justify-between">
-        <time datetime="2022-05-20T00:00:00.000Z">
+    <picture>
+	<source type="image/jpeg" srcset="/_astro/1_ZHoXlX.jpeg 600w,/_astro/1_ChD6o.jpeg 550w,/_astro/1_1izu6Q.jpeg 720w" sizes="(max-width: 767px) 600px,(max-width: 1023px) 550px,720px">
+	<img alt="Post picture" fit="cover" src="/_astro/1_1izu6Q.jpeg" loading="lazy" decoding="async" class="w-full">
+</picture>
+
+    <div class="bg-gradient-to-b from-neutral-100/20 to-neutral-100/10 pt-1">
+      <div class="grid grid-cols-4 gap-1 px-1">
+        <picture>
+	<source type="image/jpeg" srcset="/_astro/2_Zx6BYr.jpeg 100w,/_astro/2_fW1h3.jpeg 120w,/_astro/2_Z2UXAj.jpeg 240w" sizes="(max-width: 767px) 100px,(max-width: 1023px) 120px,240px">
+	<img alt="Post picture" fit="cover" src="/_astro/2_Z2UXAj.jpeg" loading="lazy" decoding="async" class="w-full">
+</picture><picture>
+	<source type="image/jpeg" srcset="/_astro/3_1MXGkq.jpeg 100w,/_astro/3_Z2t9Nd1.jpeg 120w,/_astro/3_1sXO2x.jpeg 240w" sizes="(max-width: 767px) 100px,(max-width: 1023px) 120px,240px">
+	<img alt="Post picture" fit="cover" src="/_astro/3_1sXO2x.jpeg" loading="lazy" decoding="async" class="w-full">
+</picture><picture>
+	<source type="image/jpeg" srcset="/_astro/4_ZV889D.jpeg 100w,/_astro/4_Z84tS9.jpeg 120w,/_astro/4_Z25iw8x.jpeg 240w" sizes="(max-width: 767px) 100px,(max-width: 1023px) 120px,240px">
+	<img alt="Post picture" fit="cover" src="/_astro/4_Z25iw8x.jpeg" loading="lazy" decoding="async" class="w-full">
+</picture>
+        
+      </div>
+      <div class="p-4">
+        <h3 class="text-ellipsis overflow-hidden whitespace-nowrap">
+          Rumpfdeckel
+        </h3>
+        <div class="flex flex-col-reverse lg:flex-row justify-between">
+          <time datetime="2022-05-20T00:00:00.000Z">
   20. Mai 2022
 </time>
-        F19: CFK
+          F19: CFK
+        </div>
       </div>
     </div>
   </div>
 </a>
   </div>
+      </div>
     </main>
+    <div class="pb-16 w-full bg-gradient-to-b from-neutral-100/10"></div>
+
     <footer class="mt-12 flex flex-col items-center">
   <div class="h-[1px] bg-gradient-to-r from-transparent via-neonOrange to-transparent w-full">
   </div>
-  <div class="px-12 py-4 font-futurism text-lg">
-    2023 Heiko Gosewisch
+  <div class="px-12 py-4 font-futurism text-lg flex flex-col items-center text-center">
+    <span>2023</span><span>Heiko Gosewisch</span>
   </div>
 </footer>
     

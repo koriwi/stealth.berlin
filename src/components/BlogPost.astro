@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Gallery from "../components/Gallery.astro";
-import Default from "../layouts/Default.astro";
 import { cleanName } from "../lib";
 import FormattedDate from "./FormattedDate.astro";
+import Picture from "./Picture.astro";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -16,26 +16,32 @@ const { Content } = await post.render();
 ---
 
 <div class="flex flex-col gap-2">
-  <div class="flex justify-between">
-    <div>
-      {cleanName(post.slug.split("/")[0])}:{" "}
-      {post.data.version}
+  <div class="flex flex-col-reverse lg:flex-row justify-between text-center">
+    <div class="flex justify-between lg:justify-center gap-2">
+      <span>{cleanName(post.slug.split("/")[0])}:</span>
+      <span>{post.data.version}</span>
     </div>
     <h3>{post?.data.title}</h3>
     <span><FormattedDate date={post?.data.pubDate} /></span>
   </div>
-  <div class="grid grid-cols-2 gap-2 rounded-md">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 rounded-md">
     {
       post.data.gallery?.map((image) => (
         <label
           for={image}
           class="h-full w-full hover:scale-105 cursor-pointer duration-200 z-10 hover:z-20 rounded-sm hover:rounded-md overflow-hidden"
         >
-          <img class="w-full h-full object-cover" src={image} />
+          <Picture
+            className="w-full"
+            sizes={{ sm: 400, md: 500, lg: 600 }}
+            src={image}
+          />
         </label>
       ))
     }
   </div>
-  <Content />
+  <div class="text-justify">
+    <Content />
+  </div>
 </div>
 <Gallery images={post?.data.gallery} />

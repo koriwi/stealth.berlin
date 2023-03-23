@@ -22,23 +22,28 @@ const categories = new Set(
 <header
   class="w-full flex flex-col items-center [text-shadow:0px_0px_5px_#fffa] bg-gradient-to-b to-transparent from-neutral-700/30"
 >
-  <a href="/"
-    ><h2 class="p-12 font-futurism text-5xl">
+  <a href="/">
+    <h1 class="p-4 mt-4 md:mt-0 md:p-12 font-futurism text-3xl md:text-5xl">
       {SITE_TITLE}
-    </h2></a
-  >
+    </h1>
+  </a>
   <div class="w-full flex items-end">
     <div class="h-[1px] bg-gradient-to-r from-white/10 to-neonOrange flex-grow">
     </div>
-    <nav class="font-futurism flex justify-center">
-      <HeaderLink href="/">Home</HeaderLink>
-      {
-        [...categories].map((model) => (
-          <HeaderLink href={`/${model}`}>{cleanName(model)}</HeaderLink>
-        ))
-      }
-      <HeaderLink href="/forum">Forum</HeaderLink>
-    </nav>
+    <label for="menu">
+      <nav
+        class="font-futurism flex flex-col md:flex-row gap-3 justify-center px-3"
+      >
+        <input type="checkbox" class="hidden peer" id="menu" />
+        <HeaderLink href="/">Home</HeaderLink>
+        {
+          [...categories].map((model) => (
+            <HeaderLink href={`/${model}`}>{cleanName(model)}</HeaderLink>
+          ))
+        }
+        <HeaderLink href="/forum">Forum</HeaderLink>
+      </nav>
+    </label>
     <div class="h-[1px] bg-gradient-to-l from-white/10 to-neonOrange flex-grow">
     </div>
   </div>
