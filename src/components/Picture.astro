@@ -13,12 +13,14 @@ interface Props {
   src: string;
   className?: string;
   alt?: string;
+  loading?: "eager" | "lazy";
 }
 const {
   sizes,
   src,
   fit = "cover",
   className = "",
+  loading = "lazy",
   alt = "Picture",
 } = Astro.props;
 const widths = [sizes.sm, sizes.md, sizes.lg].filter((x) => x) as number[];
@@ -34,7 +36,7 @@ for (let i = 0; i < 3 - widths.length; i++) {
   formats={["jpeg", "avif", "webp"]}
   quality={85}
   fit={fit}
-  loading="lazy"
+  loading={loading}
   sizes={twSizes(sizes)}
   aspectRatio={16 / 9}
   width={160}

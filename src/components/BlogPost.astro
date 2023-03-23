@@ -26,13 +26,14 @@ const { Content } = await post.render();
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-2 rounded-md">
     {
-      post.data.gallery?.map((image) => (
+      post.data.gallery?.map((image, index) => (
         <label
           for={image}
           class="h-full w-full hover:scale-105 cursor-pointer duration-200 z-10 hover:z-20 rounded-sm hover:rounded-md overflow-hidden"
         >
           <Picture
             className="w-full"
+            loading={index === 0 ? "eager" : "lazy"}
             sizes={{ sm: 620, md: 750 }}
             src={image}
           />
