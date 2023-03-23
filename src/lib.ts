@@ -19,8 +19,9 @@ export const twSizes = (sizes: { sm?: number; md?: number; lg?: number }) => {
     .at(-1);
   if (fallback === undefined) throw new Error("No size provided");
   return (
-    `(max-width: 767px) ${sm ?? fallback}px,` +
-    `(max-width: 1023px) ${md ?? fallback}px,` +
-    `${lg ?? fallback}px`
+    `(max-width: 639) ${sm ?? fallback}px,` +
+    `(max-width: 767px) ${md ?? fallback}px,` +
+    `(max-width: 1023px) ${lg ?? fallback}px,` +
+    `1x`
   );
 };

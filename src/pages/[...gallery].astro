@@ -1,5 +1,6 @@
 ---
 import Gallery from "../components/Gallery.astro";
+import Picture from "../components/Picture.astro";
 import Default from "../layouts/Default.astro";
 import { cleanName } from "../lib";
 
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
       (image) => `/images/${imagePath}/${image}`
     );
     return {
-      params: { gallery: `gallerie/${imagePath}` },
+      params: { gallery: `${imagePath}/gallerie` },
       props: { images, name: cleanName(imagePath), id: imagePath },
     };
   });
@@ -36,7 +37,11 @@ const { images, name } = Astro.props;
       images.map((image) => {
         return (
           <label for={image} class="h-full w-full cursor-pointer">
-            <img class="h-full w-full object-cover rounded-sm" src={image} />
+            <Picture
+              className="h-full w-full object-cover rounded-sm"
+              sizes={{ sm: 200, md: 300, lg: 400 }}
+              src={image}
+            />
           </label>
         );
       })

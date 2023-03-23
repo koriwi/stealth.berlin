@@ -25,12 +25,15 @@ const {
 
 <Picture
   widths={[sizes.sm, sizes.md, sizes.lg]}
-  alt="Post picture"
-  formats={["jpeg"]}
+  alt={alt}
+  formats={["jpeg", "avif", "webp"]}
+  quality={85}
   fit={fit}
   loading="lazy"
   sizes={twSizes(sizes)}
   aspectRatio={16 / 9}
+  width={160}
+  height={90}
   src={src}
   class={className}
 />

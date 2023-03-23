@@ -1,5 +1,6 @@
 ---
 import GalleryArrow from "./GalleryArrow.astro";
+import Picture from "./Picture.astro";
 
 interface Props {
   images: string[];
@@ -10,27 +11,30 @@ const { images } = Astro.props;
 <input class="peer hidden" type="radio" name="gallery" id="hide" checked />
 <label
   for="hide"
-  class="inset-0 z-30 flex justify-center backdrop-blur peer-checked:hidden fixed"
+  class="inset-0 z-30 flex justify-center items-center backdrop-blur peer-checked:hidden fixed"
 >
-  {
-    images.map((image, index) => (
-      <div class="relative my-auto">
-        <input class="peer hidden" type="radio" name="gallery" id={image} />
-        <label class="hidden peer-checked:flex overflow-hidden group">
-          <label class="cursor-pointer" for={images[index - 1]}>
-            <GalleryArrow classes="left-0">{"<"}</GalleryArrow>
-          </label>
+  <div class="m-1 lg:m-8 flex justify-center">
+    {
+      images.map((image, index) => (
+        <div class="relative my-8">
+          <input class="peer hidden" type="radio" name="gallery" id={image} />
+          <div class="hidden peer-checked:block group w-full h-full">
+            <label class="cursor-pointer" for={images[index - 1]}>
+              <GalleryArrow classes="left-0">{"<"}</GalleryArrow>
+            </label>
 
-          <img
-            loading="lazy"
-            src={image}
-            class="transition-all object-contain"
-          />
-          <label class="cursor-pointer" for={images[index + 1]}>
-            <GalleryArrow classes="right-0">{">"}</GalleryArrow>
-          </label>
-        </label>
-      </div>
-    ))
-  }
+            <Picture
+              className="w-full"
+              fit={"contain"}
+              sizes={{ sm: 600, md: 800, lg: 1440 }}
+              src={image}
+            />
+            <label class="cursor-pointer" for={images[index + 1]}>
+              <GalleryArrow classes="right-0">{">"}</GalleryArrow>
+            </label>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </label>

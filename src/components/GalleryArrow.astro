@@ -2,13 +2,12 @@
 interface Props {
   classes?: string;
 }
-const { classes } = Astro.props;
+const { classes = "" } = Astro.props;
 ---
 
 <div
-  class={"duration-200 transition-all absolute px-4 lg:px-8 flex h-full w-auto justify-center group-hover:opacity-100 opacity-0 bg-black/40 text-white/70 cursor-pointer select-none items-center text-xl lg:text-3xl" +
-    " " +
-    classes ?? ""}
+  class={"duration-200 transition-all absolute top-0 px-4 lg:px-8 flex h-full w-auto justify-center group-hover:opacity-100 lg:opacity-0 bg-black/40 text-white/70 cursor-pointer select-none items-center text-xl lg:text-3xl " +
+    classes}
 >
   <slot />
 </div>
