@@ -8,7 +8,8 @@
     "build": "astro build ",
     "postbuild": "cp -r dist/* docs/",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/image": "^0.16.1",
