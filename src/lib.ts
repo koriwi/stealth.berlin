@@ -3,13 +3,12 @@ export const iff = (condition: boolean, then: any, otherwise: any) => {
 };
 
 export const cleanName = (name: string) => {
-  const noUnderscore = iff(
+  const noUnderscore: string = iff(
     name.startsWith("_") || name.startsWith("/"),
     name.slice(1),
     name
   );
-  const cleanText = noUnderscore[0].toUpperCase() + noUnderscore.slice(1);
-  return cleanText;
+  return noUnderscore.split("_").map(elem => elem[0].toUpperCase()+elem.slice(1)).join("-")
 };
 export const twSizes = (sizes: { sm?: number; md?: number; lg?: number }) => {
   const { sm, md, lg } = sizes;

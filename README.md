@@ -1,17 +1,27 @@
-
 # Website of Faszination EDF
+
 ## How to use
+
 ### Install
+
 ```bash
 git pull
 nvm install
 npm i
 ```
+
 ### Use
+
 ```
 npm run dev
 ```
 
+### Heiko
+
+Wichtige Ordner:
+
+- [posts](src/content/posts)
+- [images](public/images)
 
 | Command                | Action                                           |
 | :--------------------- | :----------------------------------------------- |
