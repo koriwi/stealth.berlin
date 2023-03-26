@@ -8,33 +8,40 @@ interface Props {
 const { images } = Astro.props;
 ---
 
-<input class="peer hidden" type="radio" name="gallery" id="hide" checked />
-<label
-  for="hide"
-  class="inset-0 z-30 flex justify-center items-center backdrop-blur peer-checked:hidden fixed"
->
-  <div class="m-1 lg:m-8 flex justify-center">
-    {
-      images.map((image, index) => (
-        <div class="relative my-8">
-          <input class="peer hidden" type="radio" name="gallery" id={image} />
-          <div class="hidden peer-checked:block group w-full h-full">
-            <label class="cursor-pointer" for={images[index - 1]}>
-              <GalleryArrow classes="left-0">{"<"}</GalleryArrow>
-            </label>
-
-            <Picture
-              className="w-full"
-              fit={"contain"}
-              sizes={{ sm: 640, md: 1024, lg: 2048 }}
-              src={image}
-            />
-            <label class="cursor-pointer" for={images[index + 1]}>
-              <GalleryArrow classes="right-0">{">"}</GalleryArrow>
-            </label>
-          </div>
-        </div>
-      ))
-    }
-  </div>
-</label>
+<input
+  class={`peer hidden`}
+  type="radio"
+  name="gallery"
+  id={"hide"}
+  checked={true}
+/>
+{
+  images.map((image, index) => (
+    <div>
+      <input
+        class={`peer hidden`}
+        type="radio"
+        name="gallery"
+        id={image}
+        checked={false}
+      />
+      <label
+        for={image}
+        class={`z-20 absolute backdrop-blur-md group inset-0 hidden peer-checked:flex flex-grow justify-between w-full h-full overflow-hidden`}
+      >
+        <label class="cursor-pointer" for={images[index - 1]}>
+          <GalleryArrow classes={"w-full"}>{"<"}</GalleryArrow>
+        </label>
+        <label for="hide">
+          <Picture
+            className="w-full h-full object-contain bg-white/10"
+            src={image}
+          />
+        </label>
+        <label class="cursor-pointer" for={images[index + 1]}>
+          <GalleryArrow>{">"}</GalleryArrow>
+        </label>
+      </label>
+    </div>
+  ))
+}

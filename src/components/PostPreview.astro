@@ -12,7 +12,7 @@ const { post } = Astro.props;
 <a class="rounded-sm overflow-hidden" href={"/" + post.slug}>
   <div class="max-w-lg rounded-sm cursor-pointer flex justify-between flex-col">
     <Picture
-      className="w-full"
+      className="h-48 w-full object-cover"
       sizes={{ sm: 640, md: 768 }}
       src={post.data.gallery[0]}
     />
@@ -24,7 +24,7 @@ const { post } = Astro.props;
             .slice(1, 4)
             .map((picture) => (
               <Picture
-                className="w-full"
+                className="w-full h-12 object-cover"
                 src={picture}
                 sizes={{ sm: 146, md: 185 }}
               />

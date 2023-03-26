@@ -38,7 +38,7 @@ const { images, name } = Astro.props;
         return (
           <label for={image} class="h-full w-full cursor-pointer">
             <Picture
-              className="h-full w-full object-cover rounded-sm"
+              className="w-full h-72 bg-white/20 object-contain rounded-sm"
               sizes={{ sm: 200, md: 380, lg: 640 }}
               src={image}
             />

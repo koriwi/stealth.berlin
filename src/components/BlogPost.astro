@@ -32,7 +32,7 @@ const { Content } = await post.render();
           class="h-full w-full hover:scale-105 cursor-pointer duration-200 z-10 hover:z-20 rounded-sm hover:rounded-md overflow-hidden"
         >
           <Picture
-            className="w-full"
+            className="w-full h-72 object-contain bg-white/20"
             loading={index === 0 ? "eager" : "lazy"}
             sizes={{ sm: 620, md: 750 }}
             src={image}
