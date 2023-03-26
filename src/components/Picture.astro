@@ -1,10 +1,7 @@
 ---
 import { Picture } from "@astrojs/image/components";
-import { readFileSync, readdirSync } from 'fs';
-import sharp from 'sharp';
 import { twSizes } from "../lib";
 // import generateImage from internal.js
-import { generateImage } from "astro/dist/assets/internal"
 import type { ImageMetadata } from "astro";
 interface Props {
   sizes?: {
@@ -27,7 +24,7 @@ const {
 
 
 const imageGlob = await import.meta.glob("../../public/images/**/*")
-const image = {orientation: 0, ...((await imageGlob['../../public'+src]()) as any).default as ImageMetadata}
+let image = {orientation: 0, ...((await imageGlob['../../public'+src]()) as any).default as ImageMetadata}
 
 const widths = sizes
   ? ([sizes.sm, sizes.md, sizes.lg].filter((x) => x) as number[])

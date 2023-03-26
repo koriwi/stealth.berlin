@@ -1,4 +1,19 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["astrojs"]
+  "cSpell.words": ["astro", "astrojs", "Unbekannt"],
+  "tailwindCSS.files.exclude": [
+    "**/node_modules/**",
+    "**/docs/**",
+    "**/dist/**"
+  ],
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders",
+    "dist",
+    "docs"
+  ]
 }

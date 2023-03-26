@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build ",
-    "postbuild": "cp -r dist/* docs/",
+    "postbuild": "rm -rf docs && cp -r dist docs && cp CNAME ./docs/CNAME && cp .nojekyll ./docs/.nojekyll",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky install"

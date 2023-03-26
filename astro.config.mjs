@@ -8,9 +8,7 @@ import dynamicImport from "vite-plugin-dynamic-import";
 // https://astro.build/config
 export default defineConfig({
   site: "https://stealth.berlin",
-  vite: {
-    plugins: [dynamicImport({})],
-  },
+
   integrations: [
     mdx(),
     sitemap(),
