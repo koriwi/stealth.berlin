@@ -5,6 +5,7 @@ import sharp from 'sharp';
 import { twSizes } from "../lib";
 // import generateImage from internal.js
 import { generateImage } from "astro/dist/assets/internal"
+import type { ImageMetadata } from "astro";
 interface Props {
   sizes?: {
     sm: number;
@@ -24,19 +25,10 @@ const {
   alt = "Picture",
 } = Astro.props;
 
-// const imageSourcePath = new URL(`../../public${src}`, import.meta.url).href.slice(7);
-// // add static image
 
-const image = (await import("../../public"+src)).default;
-// const imgblabla = astroImage.addStaticImage ? await generateImage({
-//   allPages:{}, 
-// },{src: imageSourcePath,},"dist"+astroImage.addStaticImage({src: imageSourcePath,})): imageSourcePath
-// console.log(imgblabla)
-// const imageBuffer = readFileSync(".");
-// const {width, height, format} = await sharp(imageBuffer).metadata()
-// const image: ImageMetadata = {width: width!, height: height!, format: format as InputFormat, src }
+const imageGlob = await import.meta.glob("../../public/images/**/*")
+const image = ((await imageGlob['../../public'+src]()) as any).default as ImageMetadata
 
-console.log(image)
 const widths = sizes
   ? ([sizes.sm, sizes.md, sizes.lg].filter((x) => x) as number[])
   : [1];
