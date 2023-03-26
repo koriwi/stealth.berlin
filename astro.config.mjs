@@ -11,5 +11,10 @@ export default defineConfig({
   vite: {
     plugins: [dynamicImport({})],
   },
-  integrations: [mdx(), sitemap(), tailwind(), image()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind(),
+    image({ serviceEntryPoint: "@astrojs/image/sharp" }),
+  ],
 });

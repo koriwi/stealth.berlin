@@ -27,7 +27,7 @@ const {
 
 
 const imageGlob = await import.meta.glob("../../public/images/**/*")
-const image = ((await imageGlob['../../public'+src]()) as any).default as ImageMetadata
+const image = {orientation: 0, ...((await imageGlob['../../public'+src]()) as any).default as ImageMetadata}
 
 const widths = sizes
   ? ([sizes.sm, sizes.md, sizes.lg].filter((x) => x) as number[])
