@@ -19,34 +19,38 @@ const videoLinks = [
 ---
 
 <Default>
-  <h2>Forum</h2>
-  <h3>Hier alle Links zu den RC-Network Threads</h3>
-  <div class="flex flex-col items-center gap-2">
-    {
-      forumLinks.map((link) => (
-        <a
-          target="_blank"
-          class="py-2 px-4 rounded-md text-shadow shadow-black bg-neutral-600/50 w-full"
-          href={link.url}
-        >
-          {link.title}
-        </a>
-      ))
-    }
+  <div>
+    <h2>Forum</h2>
+    <h3>Hier alle Links zu den RC-Network Threads</h3>
+    <div class="flex flex-col items-center gap-2">
+      {
+        forumLinks.map((link) => (
+          <a
+            target="_blank"
+            class="py-2 px-4 rounded-md text-shadow shadow-black bg-neutral-600/50 w-full"
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
   </div>
-  <h2>Videos</h2>
-  <h3>Hier alle Links zu meinen Videos</h3>
-  <div class="flex flex-col items-center gap-2">
-    {
-      videoLinks.map((link) => (
-        <a
-          target="_blank"
-          class="py-2 px-4 rounded-md text-shadow shadow-black bg-neutral-600/50 w-full"
-          href={link.url}
-        >
-          {link.title}
-        </a>
-      ))
-    }
+  <div>
+    <h2>Videos</h2>
+    <h3>Hier alle Links zu meinen Videos</h3>
+    <div class="flex flex-col items-center gap-2">
+      {
+        videoLinks.map((link) => (
+          <a
+            target="_blank"
+            class="py-2 px-4 rounded-md text-shadow shadow-black bg-neutral-600/50 w-full"
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
   </div>
 </Default>

@@ -17,7 +17,7 @@ const posts = defineCollection({
       .string()
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
-    gallery: z.array(z.string()).min(1).default([]),
+    gallery: z.array(z.string()).optional().default([]),
   }),
 });
 

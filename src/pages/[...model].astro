@@ -74,37 +74,40 @@ const posts = (
 ---
 
 <Default title={model.name}>
-  <h2>
-    {model.name} Posts und
-    <a class="text-center link" href={"/" + model.id + "/gallerie/"}>Gallerie</a
+  <div>
+    <h2>
+      {model.name} Posts und
+      <a class="text-center link" href={"/" + model.id + "/gallerie/"}
+        >Gallerie</a
+      >
+    </h2>
+    <div
+      class="flex flex-col lg:flex-row items-center justify-center lg:gap-2 p-2 rounded-sm"
     >
-  </h2>
-  <div
-    class="flex flex-col lg:flex-row items-center justify-center lg:gap-2 mb-8 p-2 rounded-sm"
-  >
-    Versionen:
-    <a
-      class={`link ${
-        !version ? "text-shadow shadow-neonGreen decoration-neonGreen" : ""
-      }`}
-      href={"/" + model.id}
-    >
-      {"Alle"}
-    </a>
-    {
-      [...model.versions].map((modelVersion) => (
-        <a
-          class={`link ${
-            modelVersion === version
-              ? "text-shadow shadow-neonGreen decoration-neonGreen"
-              : ""
-          }`}
-          href={`${model.id}_${modelVersion}`}
-        >
-          {modelVersion || "Alle"}
-        </a>
-      ))
-    }
+      Versionen:
+      <a
+        class={`link ${
+          !version ? "text-shadow shadow-neonGreen decoration-neonGreen" : ""
+        }`}
+        href={"/" + model.id}
+      >
+        {"Alle"}
+      </a>
+      {
+        [...model.versions].map((modelVersion) => (
+          <a
+            class={`link ${
+              modelVersion === version
+                ? "text-shadow shadow-neonGreen decoration-neonGreen"
+                : ""
+            }`}
+            href={`${model.id}_${modelVersion}`}
+          >
+            {modelVersion || "Alle"}
+          </a>
+        ))
+      }
+    </div>
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
     {posts.map((fp) => <PostPreview post={fp} />)}
