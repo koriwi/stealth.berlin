@@ -19,20 +19,18 @@ const {
   src,
   className = "",
   loading = "lazy",
-  alt = "Picture",
+  alt = "",
 } = Astro.props;
 
 
 const imageGlob = await import.meta.glob("../../public/images/**/*")
-let image = {orientation: 0, ...((await imageGlob['../../public'+src]()) as any).default as ImageMetadata}
-const flipImage = image.orientation === 3;
-const widths = sizes
+let image = {...((await imageGlob['../../public'+src]()) as any).default as ImageMetadata}
+
+const unsortedWidths = sizes
   ? ([sizes.sm, sizes.md, sizes.lg].filter((x) => x) as number[])
-  : [1];
-for (let i = 0; i < 3 - widths.length; i++) {
-  const fallback = widths[3 - widths.length - 1]!;
-  widths.push(fallback);
-}
+  : [image.width];
+const widths = [...new Set(unsortedWidths.sort((a, b) => a - b))];
+
 ---
 {
   !!sizes
@@ -41,7 +39,6 @@ for (let i = 0; i < 3 - widths.length; i++) {
       widths={widths}
       alt={alt}
       formats={["jpeg", "avif", "webp"]}
-      style={{ transform: flipImage ? "rotate(180deg)" : "" }}
       quality={85}
       width={image.width}
       height={image.height}
