@@ -32,13 +32,13 @@ const { images, name } = Astro.props;
   </h2>
 
   <Gallery images={images} />
-  <div class="grid grid-cols-2 content-center gap-2">
+  <div class="grid lg:grid-cols-2 content-center gap-2">
     {
       images.map((image) => {
         return (
           <label for={image} class="h-full w-full cursor-pointer">
             <Picture
-              className="w-full h-72 bg-white/20 object-contain rounded-sm"
+              className="w-full lg:h-72 bg-white/20 object-contain rounded-sm"
               sizes={{ sm: 200, md: 380, lg: 640 }}
               src={image}
             />

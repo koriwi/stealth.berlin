@@ -14,7 +14,7 @@ const { post } = Astro.props;
     {
       post.data.gallery?.[0] ? (
         <Picture
-          className="h-48 w-full object-cover"
+          className="md:h-48 w-full object-cover"
           sizes={{ sm: 640, md: 768 }}
           src={post.data.gallery[0]}
         />

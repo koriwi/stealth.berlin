@@ -16,7 +16,7 @@ const isActive =
 <a
   href={href}
   class:list={[
-    "px-2 text-center hidden peer-checked:block md:block duration-300 border-b-[1px]",
+    "px-2 text-center hidden peer-checked:block xl:block duration-300 border-b-[1px]",
     isActive
       ? " text-white text-shadow shadow-neonGreen border-neonGreen font-extrabold"
       : " text-white/75 border-[#FF5F1F]",
@@ -29,7 +29,7 @@ const isActive =
   class:list={[
     "px-2 text-center peer-checked:hidden duration-300 border-b-[1px] ",
     isActive
-      ? "md:hidden text-white text-shadow shadow-neonGreen border-neonGreen font-extrabold"
+      ? "xl:hidden text-white text-shadow shadow-neonGreen border-neonGreen font-extrabold"
       : "hidden",
   ]}
   {...props}
