@@ -28,10 +28,11 @@ const { images, name } = Astro.props;
 
 <Default title={name + " Gallerie"} description={`${images.length} Bilder`}>
   <h2>
-    {name} Gallerie
+    {name}
+    Gallerie ({images.length} Bilder)
   </h2>
 
-  <Gallery images={images} />
+  <Gallery images={images} slot="global" />
   <div class="grid lg:grid-cols-2 content-center gap-2">
     {
       images.map((image) => {
