@@ -3,6 +3,7 @@ title: "Starfighter"
 pubDate: "2023-03-24"
 version: Starfighter
 gallery:
+  - "/images/formen/F104Form.jpg"
   - "/images/formen/F104Form01.jpg"
   - "/images/formen/F104Form02.jpg"
   - "/images/formen/F104Form03.jpg"
