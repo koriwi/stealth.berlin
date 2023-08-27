@@ -44,7 +44,6 @@ gallery:
   - "/images/formen/Tron-Jet-Form36.jpg"
   - "/images/formen/Tron-Jet-Form37.jpg"
   - "/images/formen/Tron-Jet-Form38.jpg"
-  - "/images/formen/Tron-Jet-Form38.jpg"
   - "/images/formen/Tron-Jet-Form40.jpg"
   - "/images/formen/Tron-Jet-Form41.jpg"
   - "/images/formen/Tron-Jet-Form42.jpg"
