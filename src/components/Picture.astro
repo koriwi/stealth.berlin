@@ -24,7 +24,10 @@ const {
 
 
 const imageGlob = await import.meta.glob("../../public/images/**/*")
-let image = {...((await imageGlob['../../public'+src]()) as any).default as ImageMetadata}
+const imagePath = '../../public'+src;
+const imageFunction = imageGlob[imagePath];
+if (imageFunction === undefined) throw new Error(`${imagePath}: path does not exists! Please check!`)
+let image = {...((await imageFunction()) as any).default as ImageMetadata}
 
 const unsortedWidths = sizes
   ? ([sizes.sm, sizes.md, sizes.lg].filter((x) => x) as number[])
