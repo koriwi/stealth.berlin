@@ -21,28 +21,41 @@ const { Content } = await post.render();
       <span>{cleanName(post.slug.split("/")[0])}:</span>
       <span>{post.data.version}</span>
     </div>
-    <h3>{post?.data.title}</h3>
+    <h3 id="top">{post?.data.title}</h3>
     <span><FormattedDate date={post?.data.pubDate} /></span>
   </div>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 rounded-md">
-    {
-      post.data.gallery?.map((image, index) => (
-        <label
-          for={image}
-          class="h-full w-full hover:scale-105 cursor-pointer duration-200 z-10 hover:z-20 rounded-sm hover:rounded-md overflow-hidden"
-        >
-          <Picture
-            className="w-full lg:h-72 object-contain bg-white/20"
-            loading={index === 0 ? "eager" : "lazy"}
-            sizes={{ sm: 620, md: 750 }}
-            src={image}
-          />
-        </label>
-      ))
-    }
-  </div>
-  <div class="text-justify">
-    <Content />
-  </div>
+  {post.data.description && <div>{post.data.description}</div>}
+  <a href="#content" class="italic underline"
+    >Hier geht's direkt zum text: *Klick*</a
+  >
 </div>
-<Gallery images={post?.data.gallery} />
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-2 rounded-md">
+  {
+    post.data.gallery?.map((image, index) => (
+      <label
+        for={image}
+        class="h-full w-full hover:scale-105 cursor-pointer duration-200 z-10 hover:z-20 rounded-sm hover:rounded-md overflow-hidden"
+      >
+        <Picture
+          className="w-full lg:h-72 object-contain bg-white/20"
+          loading={index === 0 ? "eager" : "lazy"}
+          sizes={{ sm: 620, md: 750 }}
+          src={image}
+        />
+      </label>
+    ))
+  }
+</div>
+<div id="content" class="text-justify">
+  {
+    Content.length ? (
+      <Content />
+    ) : (
+      <p>Dieses mal kein Text, nur Bilder ¯\_(ツ)_/¯</p>
+    )
+  }
+  <a href="#top" class="italic underline">Zurück nach oben: *Klick*</a>
+</div>
+<div>
+  <Gallery images={post?.data.gallery} />
+</div>
