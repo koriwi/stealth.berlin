@@ -46,7 +46,7 @@ const { Content } = await post.render();
 </div>
 <div id="content" class="text-justify">
   {
-    Content.length ? (
+    post.body.length ? (
       <Content />
     ) : (
       <p>Dieses mal kein Text, nur Bilder ¯\_(ツ)_/¯</p>
