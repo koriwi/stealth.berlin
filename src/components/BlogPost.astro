@@ -45,13 +45,7 @@ const { Content } = await post.render();
   }
 </div>
 <div id="content" class="font-futurism">
-  {
-    post.body.length ? (
-      <Content />
-    ) : (
-      <p>Dieses mal kein Text, nur Bilder ¯\_(ツ)_/¯</p>
-    )
-  }
+  {post.body.length ? <Content /> : <p>Dieses mal kein Text, nur Bilder</p>}
   <a href="#top" class="font-futurism underline">Anfang</a>
 </div>
 <div>
