@@ -42,3 +42,26 @@ gallery:
   - "/images/formen/F104Form37.jpg"
   - "/images/formen/F104Form38.jpg"
 ---
+
+## Material und Aufbau
+
+- Verwendete Harze/Beimischung
+  - Formen Harz P von R&G
+  - Laminierharz L mit GL2/210min Härter
+  - Baumwollflocken/Microballons/Thixotropiermittel
+- Trenneben 3mm Weißbeschichtete Schrankrückwand
+- Trennmittel
+  - PVA
+- Befestigung/Zentrierung
+  - 6mm Durchgangshülsen/Verschraubngen
+  - Zentrierstifte/Hülsen
+- Faserverstärkung GFK immer um 90°gedreht
+  - 1x49gr
+  - 2X80gr
+  - 3X163gr
+  - 3X280gr
+  - 4X380gr
+  - 3X280gr
+  - 3X163gr
+  - 2X80gr
+  - 1x49gr
