@@ -44,7 +44,7 @@ gallery:
 ## Material und Aufbau
 
 - Verwendete Harze/Beimischung
-  - -Formen Harz P von R&G
+  - Formen Harz P von R&G
   - -Laminierharz L mit GL2/210min Härter
   - -Baumwollflocken/Microballons/Thixotropiermittel
 - Trenneben 3mm Weißbeschichtete Schrankrückwand
