@@ -9,7 +9,8 @@
     "postbuild": "rm -rf docs && cp -r dist docs && cp CNAME ./docs/CNAME && cp .nojekyll ./docs/.nojekyll",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "bash ./deploy.sh"
   },
   "dependencies": {
     "@astrojs/image": "^0.16.1",
