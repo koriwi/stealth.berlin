@@ -1,5 +1,5 @@
 ---
-title: "NEWS"
+title: "Super Sonic EDF Wing / Kyosho EDF Mirage"
 pubDate: "2023-09-04"
 version: "News"
 description: "Hier einige Bilder zu Aktuellem"
