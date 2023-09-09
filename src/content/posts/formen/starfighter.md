@@ -45,16 +45,16 @@ gallery:
 
 ## Material und Aufbau
 
-- Verwendete Harze/Beimischung
+- Verwendete Harze / Beimischung
   - -Formen Harz P von R&G
-  - -Laminierharz L mit GL2/210min Härter
-  - -Baumwollflocken/Microballons/Thixotropiermittel
+  - -Laminierharz L mit GL2 / 210min Härter
+  - -Baumwollflocken / Microballons / Thixotropiermittel
 - Trenneben 3mm Weißbeschichtete Schrankrückwand
 - Trennmittel
   - -PVA
-- Befestigung/Zentrierung
-  - -6mm Durchgangshülsen/Verschraubngen
-  - -Zentrierstifte/Hülsen
+- Befestigung / Zentrierung
+  - -6mm Durchgangshülsen / Verschraubngen
+  - -Zentrierstifte / Hülsen
 - Faserverstärkung GFK immer um 90°gedreht
   - -1x49gr
   - -2X80gr

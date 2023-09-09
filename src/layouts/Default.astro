@@ -95,6 +95,20 @@ const { title } = Astro.props;
       .link {
         @apply underline underline-offset-4 decoration-1;
       }
+      #content * {
+        @apply text-left leading-6;
+      }
+      #content h2 {
+        @apply mb-4;
+      }
+      #content h3 {
+        @apply mb-3;
+      }
+      #content ul {
+        @apply list-outside mx-4 px-2;
+        list-style-type: revert;
+      }
+      
     </style>
   </body>
 </html>

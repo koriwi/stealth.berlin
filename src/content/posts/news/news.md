@@ -21,7 +21,7 @@ gallery:
 - Spannweite: 998mm
 - EDF:50er FMS 4500KV
 - ESC: 40A Plush 32 Series
-- Lipo: 4S/2200mAh 20C
+- Lipo: 4S / 2200mAh 20C
 - Abfluggewicht ca.620gr
 - Schub: ca.760gr
 - Flugzeitz bis 6 min.
@@ -32,7 +32,7 @@ gallery:
 - Spannweite: 500mm
 - EDF:45er ?KV
 - ESC: 20A Plush 32 Series
-- Lipo: 3S/1000mAh 25C
+- Lipo: 3S / 1000mAh 25C
 - Abfluggewicht ca.320gr
 - Schub: ca.280gr
 - Flugzeitz bis 6 min.
