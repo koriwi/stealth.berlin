@@ -1,5 +1,5 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { twSizes } from "../lib";
 // import generateImage from internal.js
 import type { ImageMetadata } from "astro";
@@ -38,10 +38,9 @@ const widths = [...new Set(unsortedWidths.sort((a, b) => a - b))];
 {
   !!sizes
   ? <>
-    <Picture
+    <Image
       widths={widths}
       alt={alt}
-      formats={["jpeg", "avif", "webp"]}
       quality={85}
       width={image.width}
       height={image.height}

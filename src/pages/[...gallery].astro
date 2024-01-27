@@ -33,9 +33,12 @@ const { images, name } = Astro.props;
   </h2>
 
   <Gallery images={images} slot="global" />
-  <div class="grid lg:grid-cols-2 content-center gap-2">
+  <div
+    class="grid lg:grid-cols-2 content-center gap-2"
+    transition:name={`gallery-overview-${name}`}
+  >
     {
-      images.map((image) => {
+      images.map((image, index) => {
         return (
           <label for={image} class="h-full w-full cursor-pointer">
             <Picture

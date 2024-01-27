@@ -27,15 +27,16 @@ const { Content } = await post.render();
   {post.data.description && <div>{post.data.description}</div>}
   <a href="#content" class="font-futurism underline">Beschreibung</a>
 </div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-2 rounded-md">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 rounded-md">
   {
     post.data.gallery?.map((image, index) => (
       <label
         for={image}
         class="h-full w-full hover:scale-105 cursor-pointer duration-200 z-10 hover:z-20 rounded-sm hover:rounded-md overflow-hidden"
+        transition:name={`image-${post.slug.replace(/[-_\/]/g, "")}-${index}`}
       >
         <Picture
-          className="w-full lg:h-72 object-contain bg-white/20"
+          className="w-full lg:h-72 object-contain bg-zinc-600/20 drop-shadow-md"
           loading={index === 0 ? "eager" : "lazy"}
           sizes={{ sm: 620, md: 750 }}
           src={image}

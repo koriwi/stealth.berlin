@@ -13,11 +13,13 @@ const { post } = Astro.props;
   <div class="max-w-lg rounded-sm cursor-pointer flex justify-between flex-col">
     {
       post.data.gallery?.[0] ? (
-        <Picture
-          className="md:h-48 w-full object-cover"
-          sizes={{ sm: 640, md: 768 }}
-          src={post.data.gallery[0]}
-        />
+        <div transition:name={`image-${post.slug.replace(/[-_\/]/g, "")}-0`}>
+          <Picture
+            className="md:h-48 w-full object-cover"
+            sizes={{ sm: 640, md: 768 }}
+            src={post.data.gallery[0]}
+          />
+        </div>
       ) : (
         <div class="h-48 w-full flex justify-center items-center bg-black/40">
           Kein Bild
@@ -28,15 +30,19 @@ const { post } = Astro.props;
     <div class="bg-gradient-to-b from-neutral-100/20 to-neutral-100/10 pt-1">
       <div class="grid grid-cols-4 gap-1 px-1 h-12">
         {
-          post.data.gallery
-            .slice(1, 4)
-            .map((picture) => (
+          post.data.gallery.slice(1, 4).map((picture, index) => (
+            <div
+              transition:name={`image-${post.slug.replace(/[-_\/]/g, "")}-${
+                index + 1
+              }`}
+            >
               <Picture
                 className="w-full h-12 object-cover"
                 src={picture}
                 sizes={{ sm: 146, md: 185 }}
               />
-            ))
+            </div>
+          ))
         }
         {
           (
