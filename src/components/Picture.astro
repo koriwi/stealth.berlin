@@ -58,6 +58,14 @@ const widths = [...new Set(unsortedWidths.sort((a, b) => a - b))];
       }
     </style>
   </>
-  : <img {...image} alt={alt} loading={loading} class={className} />
+  : <Image
+      alt={alt}
+      quality={95}
+      width={image.width}
+      height={image.height}
+      loading={loading}
+      src={image}
+      class={className}
+    />
   
 }
