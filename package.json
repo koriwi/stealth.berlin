@@ -10,17 +10,17 @@
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky install",
+    "predeploy": "npm run build",
     "deploy": "bash ./deploy.sh"
   },
   "dependencies": {
-    "@astrojs/image": "^0.16.1",
     "@astrojs/mdx": "^0.17.2",
     "@astrojs/rss": "^2.1.1",
     "@astrojs/sitemap": "^1.1.0",
-    "@astrojs/tailwind": "^3.1.1",
+    "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.2.6",
     "sharp": "^0.31.3",
-    "tailwindcss": "^3.2.7",
+    "tailwindcss": "^3.4.1",
     "vite-plugin-dynamic-import": "^1.2.7"
   },
   "devDependencies": {
